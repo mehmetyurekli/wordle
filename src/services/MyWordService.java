@@ -1,7 +1,5 @@
 package services;
-
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.*;
 
 public class MyWordService implements WordService{
@@ -9,13 +7,14 @@ public class MyWordService implements WordService{
     private static final Locale locale = Locale.forLanguageTag("tr-TR");
 
     @Override
-    public void load(File file) {
+    public void load(InputStream stream) {
         try{
-            Scanner sc = new Scanner(new FileInputStream(file));
+            Scanner sc = new Scanner(stream);
             while(sc.hasNext()){
                 String line = sc.nextLine();
                 set.add(line.toUpperCase(locale));
             }
+            stream.close();
         }
         catch (Exception e){
             e.printStackTrace();

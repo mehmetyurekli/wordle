@@ -1,9 +1,8 @@
 package services;
-
-import java.io.File;
+import java.io.InputStream;
 
 public interface WordService {
-    void load(File file);
+    void load(InputStream stream);
     boolean isWord(String word);
     String getRandomWord();
 }
